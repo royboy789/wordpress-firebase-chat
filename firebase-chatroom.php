@@ -3,7 +3,7 @@
 * Plugin Name: Chat Rooms powered by Firebase
 * Plugin URI: http://www.roysivan.com
 * Description: Using Firebase to create chat rooms 
-* Version: 0.1
+* Version: 1.1
 * Author: Roy Sivan
 * Author URI: http://www.roysivan.com
 * Text Domain: firechatroom
@@ -27,6 +27,9 @@ class fire_chat {
 		new fireInit();
 		new chat_admin_menu();
 		new _chatroom_tpl();
+		
+		$shortcode = new chatroom_shortcode();
+		$shortcode->__init();
 		
 	}
 	

@@ -1,30 +1,31 @@
 <?php
-function do_chat_room( $atts ) {
-	$a = shortcode_atts( array(
-		'id' => ''
-		), $atts );
+
+class chatroom_shortcode {
 	
-	ob_start();
-	if($a['id'] == ''){
-		echo '<p>post_id must be set in shortcode to display chat room</p>';
+	function __init() {
 		
-	} else {
-		echo '<div ng-app="chat_app" ng-controller="chat_controller" ng-init="startChat('.$a['id'].')" class="ng-scope">
-		<div id="fire_chat_container">
-			<div id="fire_chat_messages">
-				<article ng-repeat="msg in fireChat.chat">
-					<strong>{{msg.name}}</strong>: <span>{{msg.msg}}</span>
-				</article>
-			</div>
-			<form id="fire_chat_form" ng-submit="newChat()">
-				<input ng-model="msg.name" placeholder="Name" />
-				<textarea ng-model="msg.msg" placeholder="Message"></textarea>
-				<input type="submit" value="chat" />
-			</form>
-		</div>
-	</div>';
+		add_shortcode( 'ng-chatroom', array( $this, 'do_chat_room' ) );
+		
+	}
+	
+	function do_chat_room( $atts ) {
+		$a = shortcode_atts( array(
+			'id' => ''
+			), $atts );
+		
+		ob_start();
+		if($a['id'] == ''){
+			echo '<p>post_id must be set in shortcode to display chat room</p>';
+			
+		} else {
+			$content = '<h2>Testing: '.$a['id'].'</h2>';
+			$content = '<div ng-app="chat_app" ng-controller="chat_controller" ng-init="startChat('.$a['id'].')">';
+				$content .= file_get_contents( CHATROOM_PLUGIN_PATH.'inc/chatroom.tpl.html' );	
+			$content .= '</div>';
+			echo $content;
+		}
+		return ob_get_clean();
+	}
 }
-return ob_get_clean();
-}
-add_shortcode( 'ng-chatroom', 'do_chat_room' );
+
 ?>
