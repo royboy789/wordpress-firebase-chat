@@ -17,6 +17,7 @@ define( 'CHATROOM_PLUGIN_VERSION', '0.1' );
 require 'inc/init.php';
 require 'inc/admin-menu.php';
 require 'inc/chatroom-template.php';
+require 'inc/shortcodes.php';
 
 class fire_chat {
 	
