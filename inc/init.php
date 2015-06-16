@@ -22,7 +22,7 @@ class fireInit{
 			'search_items'       => __( 'Search Chat Rooms', 'your-plugin-textdomain' ),
 			'parent_item_colon'  => __( 'Parent Rooms:', 'your-plugin-textdomain' ),
 			'not_found'          => __( 'No chat rooms found.', 'your-plugin-textdomain' ),
-			'not_found_in_trash' => __( 'No chat rooms found in Trash.', 'your-plugin-textdomain' )
+			'not_found_in_trash' => __( 'No chat rooms found in Trash.', 'your-plugin-textdomain' ),
 		);
 
 		$args = array(
@@ -37,7 +37,7 @@ class fireInit{
 			'has_archive'        => true,
 			'hierarchical'       => false,
 			'menu_position'      => null,
-			'supports'           => array( 'title', 'editor', 'author', 'page-attributes', 'custom-fields' )
+			'supports'           => array( 'title', 'editor', 'author', 'page-attributes', 'custom-fields' ),
 		);
 
 		register_post_type( 'chatrooms', $args );
@@ -72,6 +72,3 @@ class fireInit{
 	}
 
 }
-
-
-?>

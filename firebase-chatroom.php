@@ -43,7 +43,6 @@ class fire_chat {
 			false
 		);
 
-
 		// Firebase
 		wp_enqueue_script(
 			'fireBase',
@@ -72,7 +71,7 @@ class fire_chat {
 			'angular-chatroom-app',
 			'fireData',
 			array(
-				'fire_url' => get_option( '_chatroom_firebase_url', false )
+				'fire_url' => get_option( '_chatroom_firebase_url', false ),
 			)
 		);
 	}
@@ -80,33 +79,32 @@ class fire_chat {
 
 
 /** JSON REST API CHECK **/
-function chat_wpapi_check(){
-	if ( !is_plugin_active( 'json-rest-api/plugin.php' ) ) {
+function chat_wpapi_check() {
+	if ( ! is_plugin_active( 'json-rest-api/plugin.php' ) ) {
 		add_action( 'admin_notices', 'chat_wpapi_error' );
 	}
 }
 
-function chat_wpapi_error(){
+function chat_wpapi_error() {
 	echo '<div class="error"><p><strong>JSON REST API</strong> must be installed and activated for the <strong>Chat Rooms</strong> plugin to work properly - <a href="https://wordpress.org/plugins/json-rest-api/" target="_blank">Install Plugin</a></p></div>';
 }
 
-add_action('admin_init', 'chat_wpapi_check');
+add_action( 'admin_init', 'chat_wpapi_check' );
 
 
 /** ANGULARJS FOR WP CHECK **/
-function chat_angular_check(){
-	if ( !is_plugin_active( 'angularjs-for-wp/plugin.php' ) ) {
+function chat_angular_check() {
+	if ( ! is_plugin_active( 'angularjs-for-wp/plugin.php' ) ) {
 		add_action( 'admin_notices', 'chat_angular_error' );
 	}
 }
 
-function chat_angular_error(){
+function chat_angular_error() {
 	echo '<div class="error"><p><strong>AngularJS For WP</strong> must be installed and activated for the <strong>Chat Rooms</strong> plugin to work properly - <a href="https://wordpress.org/plugins/angularjs-for-wp/" target="_blank">Install Plugin</a></p></div>';
 }
 
-add_action('admin_init', 'chat_angular_check');
+add_action( 'admin_init', 'chat_angular_check' );
 
 
 // PLUGIN INIT
 new fire_chat();
-?>
