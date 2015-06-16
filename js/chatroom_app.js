@@ -31,7 +31,9 @@ chat_app.controller('chat_controller', [ '$rootScope', '$scope', '$http', '$fire
 		if( !$scope.fireChat.chat ) {
 			$scope.fireChat.chat = [$scope.msg];
 		} else {
-			$scope.fireChat.chat.push( $scope.msg );
+			if ($scope.msg.msg && $scope.msg.name) {
+				$scope.fireChat.chat.push( $scope.msg );
+			}
 		}
 
 		$scope.resetMsg( name );
