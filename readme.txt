@@ -11,10 +11,10 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Use the Chat Rooms plugin to have chat rooms added to your site, powered by [Firebase](https://www.firebase.com).
 
 == Description ==
-  
-Powered by the [AngularJS for WP](https://wordpress.org/plugins/angularjs-for-wp/) plugin and [Firebase](https://www.firebase.com), add real time communication to your site, for free. Create a new chat room (custom post type) and off you go! 
-  
-*Fully CSS customizable  
+
+Powered by the [AngularJS for WP](https://wordpress.org/plugins/angularjs-for-wp/) plugin and [Firebase](https://www.firebase.com), add real time communication to your site, for free. Create a new chat room (custom post type) and off you go!
+
+*Fully CSS customizable
 *Template powered - __coming soon__
 
 
