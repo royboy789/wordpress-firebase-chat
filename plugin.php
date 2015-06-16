@@ -5,17 +5,20 @@ class fire_chat {
 	function __construct() {
 		new fireInit();
 		new chat_admin_menu();
-		new _chatroom_tpl();
 
+		$template  = new _chatroom_tpl();
 		$shortcode = new chatroom_shortcode();
+
+		$template->__init();
 		$shortcode->__init();
+
 		self::wp_hooks();
 	}
 
 	protected function wp_hooks() {
 		add_action( 'admin_init', array( $this, 'wpapi_check' ) );
 		add_action( 'admin_init', array( $this, 'angular_check' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts' ) );
 	}
 
 	/** JSON REST API CHECK **/
@@ -40,7 +43,7 @@ class fire_chat {
 		echo '<div class="error"><p><strong>AngularJS For WP</strong> must be installed and activated for the <strong>Chat Rooms</strong> plugin to work properly - <a href="https://wordpress.org/plugins/angularjs-for-wp/" target="_blank">Install Plugin</a></p></div>';
 	}
 
-	function scripts() {
+	function register_scripts() {
 		wp_register_script(
 			'angular-resource-library',
 			'//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-resource.min.js',
@@ -74,19 +77,21 @@ class fire_chat {
 			false
 		);
 		if ( is_singular( 'chatrooms' ) ) {
-			wp_enqueue_script( 'angular-resource-library' );
-			wp_enqueue_script( 'fireBase' );
-			wp_enqueue_script( 'angFire' );
-			wp_enqueue_script( 'angular-chatroom-app' );
+			$this->load_scripts();
 		}
-		if ( wp_script_is( 'angular-chatroom-app', 'enqueued' ) ) {
-			wp_localize_script(
-				'angular-chatroom-app',
-				'fireData',
-				array(
-					'fire_url' => get_option( '_chatroom_firebase_url', false ),
-				)
-			);
-		}
+	}
+
+	function load_scripts() {
+		wp_enqueue_script( 'angular-resource-library' );
+		wp_enqueue_script( 'fireBase' );
+		wp_enqueue_script( 'angFire' );
+		wp_enqueue_script( 'angular-chatroom-app' );
+		wp_localize_script(
+			'angular-chatroom-app',
+			'fireData',
+			array(
+				'fire_url' => get_option( '_chatroom_firebase_url', false ),
+			)
+		);
 	}
 }
