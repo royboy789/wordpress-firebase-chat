@@ -41,7 +41,7 @@ class fire_chat {
 	}
 
 	function scripts() {
-		wp_enqueue_script(
+		wp_register_script(
 			'angular-resource-library',
 			'//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-resource.min.js',
 			array( 'fireBase' ),
@@ -50,7 +50,7 @@ class fire_chat {
 		);
 
 		// Firebase
-		wp_enqueue_script(
+		wp_register_script(
 			'fireBase',
 			'//cdn.firebase.com/js/client/2.0.4/firebase.js',
 			array( 'angular-core' ),
@@ -58,7 +58,7 @@ class fire_chat {
 			false
 		);
 
-		wp_enqueue_script(
+		wp_register_script(
 			'angFire',
 			'//cdn.firebase.com/libs/angularfire/0.9.2/angularfire.min.js',
 			array( 'fireBase' ),
@@ -66,19 +66,27 @@ class fire_chat {
 			false
 		);
 
-		wp_enqueue_script(
+		wp_register_script(
 			'angular-chatroom-app',
 			CHATROOM_PLUGIN_URL.'js/chatroom_app.js',
 			array( 'angular-resource-library' ),
 			CHATROOM_PLUGIN_VERSION,
 			false
 		);
-		wp_localize_script(
-			'angular-chatroom-app',
-			'fireData',
-			array(
-				'fire_url' => get_option( '_chatroom_firebase_url', false ),
-			)
-		);
+		if ( is_singular( 'chatrooms' ) ) {
+			wp_enqueue_script( 'angular-resource-library' );
+			wp_enqueue_script( 'fireBase' );
+			wp_enqueue_script( 'angFire' );
+			wp_enqueue_script( 'angular-chatroom-app' );
+		}
+		if ( wp_script_is( 'angular-chatroom-app', 'enqueued' ) ) {
+			wp_localize_script(
+				'angular-chatroom-app',
+				'fireData',
+				array(
+					'fire_url' => get_option( '_chatroom_firebase_url', false ),
+				)
+			);
+		}
 	}
 }
