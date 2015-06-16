@@ -14,10 +14,7 @@ class chatroom_shortcode {
 			$atts
 		);
 
-		wp_enqueue_script( 'angular-resource-library' );
-		wp_enqueue_script( 'fireBase' );
-		wp_enqueue_script( 'angFire' );
-		wp_enqueue_script( 'angular-chatroom-app' );
+		fire_chat()->load_scripts();
 
 		$template = new _chatroom_tpl;
 
