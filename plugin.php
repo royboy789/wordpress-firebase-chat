@@ -1,23 +1,4 @@
 <?php
-/**
-* Plugin Name: Chat Rooms powered by Firebase
-* Plugin URI: http://www.roysivan.com
-* Description: Using Firebase to create chat rooms
-* Version: 1.1
-* Author: Roy Sivan
-* Author URI: http://www.roysivan.com
-* Text Domain: firechatroom
-* License: GPLv3
-*/
-
-define( 'CHATROOM_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'CHATROOM_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
-define( 'CHATROOM_PLUGIN_VERSION', '0.1' );
-
-require_once CHATROOM_PLUGIN_PATH . 'inc/init.php';
-require_once CHATROOM_PLUGIN_PATH . 'inc/admin-menu.php';
-require_once CHATROOM_PLUGIN_PATH . 'inc/chatroom-template.php';
-require_once CHATROOM_PLUGIN_PATH . 'inc/shortcodes.php';
 
 class fire_chat {
 
@@ -40,7 +21,7 @@ class fire_chat {
 	/** JSON REST API CHECK **/
 	function wpapi_check() {
 		if ( ! is_plugin_active( 'json-rest-api/plugin.php' ) ) {
-			add_action( 'admin_notices', array( $this, 'chat_wpapi_error' ) );
+			add_action( 'admin_notices', array( $this, 'wpapi_error' ) );
 		}
 	}
 
@@ -51,7 +32,7 @@ class fire_chat {
 	/** ANGULARJS FOR WP CHECK **/
 	function angular_check() {
 		if ( ! is_plugin_active( 'angularjs-for-wp/plugin.php' ) ) {
-			add_action( 'admin_notices', array( $this, 'chat_angular_error' ) );
+			add_action( 'admin_notices', array( $this, 'angular_error' ) );
 		}
 	}
 
@@ -101,7 +82,3 @@ class fire_chat {
 		);
 	}
 }
-
-
-// PLUGIN INIT
-new fire_chat();
