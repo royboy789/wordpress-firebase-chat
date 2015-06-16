@@ -1,0 +1,14 @@
+<?php ?>
+<div id="fire_chat_container">
+	<div id="fire_chat_messages">
+		<article ng-repeat="msg in fireChat.chat">
+			<strong>{{msg.name}}</strong>: <span>{{msg.msg}}</span>
+		</article>
+	</div>
+	<form id="fire_chat_form" ng-submit="newChat()">
+		<input ng-model="msg.name" placeholder="Name" />
+		<textarea ng-model="msg.msg" placeholder="Message"></textarea>
+		<input type="submit" value="chat" />
+	</form>
+</div>
+<?php ?>
