@@ -17,7 +17,7 @@ define( 'CHATROOM_PLUGIN_VERSION', '0.1' );
 require_once CHATROOM_PLUGIN_PATH . 'plugin.php';
 require_once CHATROOM_PLUGIN_PATH . 'inc/init.php';
 require_once CHATROOM_PLUGIN_PATH . 'inc/admin-menu.php';
-require_once CHATROOM_PLUGIN_PATH . 'inc/chatroom-template.php';
+require_once CHATROOM_PLUGIN_PATH . 'inc/template-loader.php';
 require_once CHATROOM_PLUGIN_PATH . 'inc/shortcodes.php';
 
 function fire_chat() {

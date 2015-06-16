@@ -19,16 +19,14 @@ class chatroom_shortcode {
 		wp_enqueue_script( 'angFire' );
 		wp_enqueue_script( 'angular-chatroom-app' );
 
-		ob_start();
+		$template = new _chatroom_tpl;
+
 		if ( '' === $args['id'] ) {
-			echo '<p>post_id must be set in shortcode to display chat room</p>';
-		} else {
-			$content = '<h2>Testing: ' . $args['id'] . '</h2>';
-			$content = '<div ng-app="chat_app" ng-controller="chat_controller" ng-init="startChat(' . $args['id'] . ')">';
-				$content .= file_get_contents( CHATROOM_PLUGIN_PATH . 'inc/chatroom.tpl.html' );
-			$content .= '</div>';
-			echo $content;
+			return '<p>post_id must be set in shortcode to display chat room</p>';
 		}
-		return ob_get_clean();
+		$content  = '<div ng-app="chat_app" ng-controller="chat_controller" ng-init="startChat(' . absint( $args['id'] ) . ')">';
+		$content .= $template->get_template();
+		$content .= '</div>';
+		return $content;
 	}
 }

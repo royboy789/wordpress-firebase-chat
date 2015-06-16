@@ -5,10 +5,13 @@ class fire_chat {
 	function __construct() {
 		new fireInit();
 		new chat_admin_menu();
-		new _chatroom_tpl();
 
+		$template  = new _chatroom_tpl();
 		$shortcode = new chatroom_shortcode();
+
+		$template->__init();
 		$shortcode->__init();
+
 		self::wp_hooks();
 	}
 
