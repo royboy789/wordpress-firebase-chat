@@ -2,7 +2,7 @@
 /**
 * Plugin Name: Chat Rooms powered by Firebase
 * Plugin URI: http://www.roysivan.com
-* Description: Using Firebase to create chat rooms 
+* Description: Using Firebase to create chat rooms
 * Version: 1.1
 * Author: Roy Sivan
 * Author URI: http://www.roysivan.com
@@ -20,52 +20,52 @@ require 'inc/chatroom-template.php';
 require 'inc/shortcodes.php';
 
 class fire_chat {
-	
+
 	function __construct() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'chat_scripts' ) );
-		
+
 		new fireInit();
 		new chat_admin_menu();
 		new _chatroom_tpl();
-		
+
 		$shortcode = new chatroom_shortcode();
 		$shortcode->__init();
-		
+
 	}
-	
+
 	function chat_scripts() {
-				
-		wp_enqueue_script( 
-			'angular-resource-library', 
-			'//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-resource.min.js', 
-			array( 'fireBase' ), 
-			'1.3.5', 
+
+		wp_enqueue_script(
+			'angular-resource-library',
+			'//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-resource.min.js',
+			array( 'fireBase' ),
+			'1.3.5',
 			false
 		);
-		
-		
+
+
 		// Firebase
-		wp_enqueue_script( 
-			'fireBase', 
-			'//cdn.firebase.com/js/client/2.0.4/firebase.js', 
-			array( 'angular-core' ), 
-			null, 
-			false 
+		wp_enqueue_script(
+			'fireBase',
+			'//cdn.firebase.com/js/client/2.0.4/firebase.js',
+			array( 'angular-core' ),
+			null,
+			false
 		);
-		
-		wp_enqueue_script( 
-			'angFire', 
-			'//cdn.firebase.com/libs/angularfire/0.9.2/angularfire.min.js', 
-			array( 'fireBase' ), 
-			null, 
-			false 
+
+		wp_enqueue_script(
+			'angFire',
+			'//cdn.firebase.com/libs/angularfire/0.9.2/angularfire.min.js',
+			array( 'fireBase' ),
+			null,
+			false
 		);
-		
-		wp_enqueue_script( 
-			'angular-chatroom-app', 
+
+		wp_enqueue_script(
+			'angular-chatroom-app',
 			CHATROOM_PLUGIN_URL.'js/chatroom_app.js',
-			array( 'angular-resource-library' ), 
-			CHATROOM_PLUGIN_VERSION, 
+			array( 'angular-resource-library' ),
+			CHATROOM_PLUGIN_VERSION,
 			false
 		);
 		wp_localize_script(

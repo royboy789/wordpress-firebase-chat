@@ -1,12 +1,12 @@
 <?php
 
 class fireInit{
-	
+
 	function __construct() {
 		add_action( 'init', array( $this, '_chat_cpt' ) );
 		add_action( 'init', array( $this, '_chat_tax' ) );
 	}
-	
+
 	function _chat_cpt() {
 		$labels = array(
 			'name'               => _x( 'Chat Rooms', 'post type general name', 'your-plugin-textdomain' ),
@@ -70,8 +70,8 @@ class fireInit{
 		register_taxonomy( 'chat-topics', array( 'chatrooms' ), $args );
 
 	}
-	
+
 }
-	
-	
+
+
 ?>
