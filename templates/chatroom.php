@@ -1,5 +1,4 @@
-<?php
-?>
+<?php ?>
 <div id="fire_chat_container">
 	<div id="fire_chat_messages">
 		<article ng-repeat="msg in fireChat.chat">
@@ -12,3 +11,4 @@
 		<input type="submit" value="chat" />
 	</form>
 </div>
+<?php ?>
