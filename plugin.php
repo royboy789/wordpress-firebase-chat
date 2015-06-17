@@ -91,6 +91,7 @@ class fire_chat {
 			'fireData',
 			array(
 				'fire_url' => get_option( '_chatroom_firebase_url', false ),
+				'user_name' => ( is_user_logged_in() ) ? ( ( wp_get_current_user()->user_firstname ) ? wp_get_current_user()->user_firstname : wp_get_current_user()->user_login ) : ''
 			)
 		);
 	}
