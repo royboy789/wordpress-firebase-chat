@@ -18,6 +18,9 @@ chat_app.controller('chat_controller', [ '$rootScope', '$scope', '$http', '$fire
 	}
 
 	$scope.resetMsg = function( name ) {
+		if (fireData.user_name != '') {
+			name = fireData.user_name;
+		}
 		$scope.msg = {
 			name: name,
 			msg: ''
