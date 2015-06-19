@@ -12,7 +12,9 @@ chat_app.controller('chat_controller', [ '$rootScope', '$scope', '$http', '$fire
 			var fire_chatroom = $firebase( new Firebase( fireData.fire_url ).child( $scope.chatroom.ID )).$asObject();
 			fire_chatroom.$bindTo( $scope, 'fireChat' ).then(function(){
 				console.log('chat messages init..');
-				$scope.scrollChat();
+				setTimeout(function() {
+					$scope.scrollChat();
+				}, 100);
 			});
 		});
 	}
