@@ -2,9 +2,9 @@
 Contributors: guavaworks, elvismdev, fatmedia
 Donate link: http://www.codecavalry.com/royboy789
 Tags: angularjs, client side, single page application, chat, chat room, chatroom, firebase
-Requires at least: 3.9
-Tested up to: 4.2.2
-Stable tag: 2.0
+Requires at least: 4.0
+Tested up to: 4.3.1
+Stable tag: 3.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -23,7 +23,7 @@ Powered by the [AngularJS for WP](https://wordpress.org/plugins/angularjs-for-wp
 1. Download zipped archive of plugin
 1. Log into your WordPress dashboard and add the new plugin via upload
 1. Activate the plugin
-1. Make sure you have the JSON REST API (WP-API) and AngularJS for WordPress plugin activated
+1. Make sure you have the JSON REST API v2 (WP-API) and AngularJS for WordPress plugin activated
 1. Click on Chat Settings in the menu and add your Firebase URL
 
 
@@ -50,3 +50,6 @@ Nothing here yet
 * Fixed Security Issues
 * Adding Template ability
 * Better Scripting
+
+= 3.0 =
+* Adding in API v2 support

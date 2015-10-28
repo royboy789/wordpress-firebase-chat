@@ -38,6 +38,7 @@ class fireInit{
 			'hierarchical'       => false,
 			'menu_position'      => null,
 			'supports'           => array( 'title', 'editor', 'author', 'page-attributes', 'custom-fields' ),
+			'show_in_rest'		 => true,
 		);
 
 		register_post_type( 'chatrooms', $args );
@@ -65,6 +66,7 @@ class fireInit{
 			'show_admin_column' => true,
 			'query_var'         => true,
 			'rewrite'           => array( 'slug' => 'chat-topics' ),
+			'show_in_rest'		=> true,
 		);
 
 		register_taxonomy( 'chat-topics', array( 'chatrooms' ), $args );

@@ -6,10 +6,11 @@ chat_app.controller('chat_controller', [ '$rootScope', '$scope', '$http', '$fire
 	console.log('chatroom init..');
 
 	$scope.startChat = function( post ) {
-		$http.get( wpAngularVars.base +'/posts/' + post ).then(function(res) {
+		$http.get( wpAngularVars.base +'/chatrooms/' + post ).then(function(res) {
+			console.log( res.data );
 			$scope.chatroom = res.data;
 
-			var fire_chatroom = $firebase( new Firebase( fireData.fire_url ).child( $scope.chatroom.ID )).$asObject();
+			var fire_chatroom = $firebase( new Firebase( fireData.fire_url ).child( $scope.chatroom.id )).$asObject();
 			fire_chatroom.$bindTo( $scope, 'fireChat' ).then(function(){
 				console.log('chat messages init..');
 				$scope.scrollChat();

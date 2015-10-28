@@ -23,7 +23,7 @@ class fire_chat {
 
 	/** JSON REST API CHECK **/
 	function wpapi_check() {
-		if ( ! is_plugin_active( 'json-rest-api/plugin.php' ) ) {
+		if ( ! class_exists( 'WP_REST_Server' ) ) {
 			add_action( 'admin_notices', array( $this, 'wpapi_error' ) );
 		}
 	}
