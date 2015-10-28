@@ -22,11 +22,3 @@ Powered by the [AngularJS for WP](https://wordpress.org/plugins/angularjs-for-wp
 AngularJS renders your posts client-side. WordPress is built on PHP, so every page a user visits is converted to HTML on the server, then served to the client. With ANgularJS you are only getting a JSON Object (text) from the server
 then renderring that to HTML using the client's machine. This will speed up your pages as well as allow for more concurrent visitors to your site as the strain on the server is reduced.
 
-== Screenshots ==
-
-Nothing here yet
-
-== Changelog ==
-
-= 1.0 =
-* Initial Build
